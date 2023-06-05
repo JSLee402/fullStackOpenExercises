@@ -1,0 +1,44 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server->>browser: CSS file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    activate server
+    server->>browser: the JavaScript file
+    deactivate server
+
+    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server->>browser: [{ "content": "HTML is easy", "date": "2023-6-3" }, ... ]
+    deactivate server
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    server->>browser: { "content": "1234", "date": "2023-6-4" }
+    deactivate server
+
+    Note right to server: The server receives data as a list of 2 key/value item
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server->>browser: [ { "content": "HTML is easy", "date": "2023-6-3" }, ..., { "content": "1234", "date": "2023-6-4" } ]
+    deactivate server
+
+    Note right to browser: The browser executes the callback function that renders the notes
+
+//QUESTIONS
+    1. I don't know if I did this correctly, but from my understanding, this was the best I could come up with.
+    2. To clarify, When the new data is submitted, the data is added to the JSON and then rendered to the browser. 
+    3. Does SPA store and render the inputted data as none-SPA?
