@@ -9,3 +9,10 @@ Exercise0:
   - Learning on using Developer Tool in browser.
   - Understanding Single Page Application and what happens between server and browser.
   - Exercise0 is on creating a sequence diagram between server and browser.
+
+Exercise1:
+  - Introduction to React
+  - Understanding components in React
+  - Use of props, JSX
+  - Understanding JavaScript
+  - JavaScript Arrays, Objects, Functions, Classes
